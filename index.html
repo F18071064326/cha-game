@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宋代分茶互动游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍵 宋代分茶互动游戏</h1>
+            <p>动手体验中国古代神奇的"水丹青"技艺</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="totalProgress"></div>
+        </div>
+
+        <div class="step-title" id="stepTitle">第一步：备器</div>
+
+        <div class="game-area" id="gameArea">
+            <img src="1.jpg" alt="备器" class="game-image" id="gameImage">
+            <div class="action-hint" id="actionHint">点击"开始游戏"按钮</div>
+            <div class="step-progress" id="stepProgress">
+                <div class="step-progress-fill" id="stepProgressFill"></div>
+            </div>
+            <canvas id="teaCanvas" width="350" height="350"></canvas>
+        </div>
+
+        <div class="description" id="description">
+            准备好分茶所需的茶具：茶盏、茶碾、茶罗、汤瓶、茶筅等。宋代人最看重茶盏，喜欢用黑色的茶盏，因为它能最好地衬托出白色的茶汤泡沫。
+        </div>
+
+        <div class="button-area">
+            <button class="btn" id="actionBtn" onclick="handleButtonClick()">开始游戏</button>
+        </div>
+    </div>
+
+    <!-- 音乐播放器 -->
+    <audio id="bgMusic" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control">
+        <button id="musicToggle" class="music-btn">🎵 音乐：开</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
