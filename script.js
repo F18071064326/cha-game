@@ -9,7 +9,7 @@ let lastY = 0;
 const steps = [
     {
         title: "第一步：备器",
-        image: "1.jpg",
+        image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/1.jpg",
         hint: "点击'开始'按钮",
         description: "准备好分茶所需的茶具：茶盏、茶碾、茶罗、汤瓶、茶筅等。宋代人最看重茶盏，喜欢用黑色的茶盏，因为它能最好地衬托出白色的茶汤泡沫。",
         action: "auto",
@@ -17,7 +17,7 @@ const steps = [
     },
     {
         title: "第二步：碾茶",
-        image: "2.jpg",
+        image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/2.jpg",
         hint: "👆 快速点击茶碾碾茶",
         description: "将茶饼放入茶碾中，细细碾成粉末。茶末碾得越细越好，这样后面点出的茶汤才会细腻洁白。",
         action: "click",
@@ -26,7 +26,7 @@ const steps = [
     },
     {
         title: "第三步：罗茶",
-        image: "3.jpg",
+        image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/3.jpg",
         hint: "👆 点击茶罗筛出细茶末",
         description: "用细茶罗筛出最细腻的茶末，去掉粗渣。只有最细的茶末，才能在击拂时产生丰富的泡沫。",
         action: "click",
@@ -35,7 +35,7 @@ const steps = [
     },
     {
         title: "第四步：温盏",
-        image: "4.jpg",
+        image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/4.jpg",
         hint: "点击'下一步'按钮",
         description: "用沸水倒入茶盏中预热。如果茶盏是冷的，茶汤就不容易产生泡沫，所以这一步很重要。",
         action: "auto",
@@ -43,7 +43,7 @@ const steps = [
     },
     {
         title: "第五步：调膏",
-        image: "5.jpg",
+        image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/5.jpg",
         hint: "✋ 在茶盏上拖动搅拌",
         description: "把温盏的水倒掉，放入茶末，加少量沸水调成膏状。膏的稠度要适中，像融化的巧克力一样。",
         action: "drag",
@@ -52,7 +52,7 @@ const steps = [
     },
     {
         title: "第六步：击拂",
-        image: "6.jpg",
+        image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/6.jpg",
         hint: "⚡ 点击进行击拂",
         description: "一边往茶盏里加水，一边用茶筅快速用力地搅动。这是最关键的一步，要让茶汤表面产生一层厚厚的、白色的泡沫。",
         action: "click",
@@ -61,7 +61,7 @@ const steps = [
     },
     {
         title: "第七步：分茶",
-        image: "7.jpg",
+        image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/7.jpg",
         hint: "✏️ 在茶盏上画画",
         description: "用茶匙或茶筅在白色的泡沫上轻轻勾画。可以画出山水、花鸟、文字等各种图案，这就是神奇的'水丹青'！画完后点击'完成'按钮。",
         action: "draw",
