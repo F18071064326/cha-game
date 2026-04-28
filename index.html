@@ -251,7 +251,7 @@
         </div>
     </div>
 
-    <!-- 音乐播放器（使用仓库内的音乐文件） -->
+    <!-- 音乐播放器 -->
     <audio id="bgMusic" loop>
         <source src="background-music.mp3" type="audio/mpeg">
         您的浏览器不支持音频播放。
@@ -270,7 +270,7 @@
         let lastX = 0;
         let lastY = 0;
 
-        // 步骤配置（全部使用仓库内相对路径，100%不会被拦截）
+        // 步骤配置（全部使用仓库内相对路径，和你的文件完全对应）
         const steps = [
             {
                 title: "第一步：备器",
@@ -383,14 +383,11 @@
         // 初始化音乐
         function initMusic() {
             if (bgMusic && musicToggle) {
-                // 设置初始音量
                 bgMusic.volume = 0.3;
                 
-                // 尝试自动播放（需要用户交互）
                 document.addEventListener('click', function firstClick() {
                     if (isMusicPlaying) {
                         bgMusic.play().catch(e => {
-                            console.log("音乐自动播放被阻止，请点击音乐按钮手动开启。");
                             musicToggle.textContent = '🎵 音乐：点击开启';
                             isMusicPlaying = false;
                         });
@@ -398,16 +395,13 @@
                     document.removeEventListener('click', firstClick);
                 });
                 
-                // 音乐切换按钮事件
                 musicToggle.addEventListener('click', function() {
                     if (isMusicPlaying) {
                         bgMusic.pause();
                         musicToggle.textContent = '🎵 音乐：关';
                         isMusicPlaying = false;
                     } else {
-                        bgMusic.play().catch(e => {
-                            console.log("音乐播放失败");
-                        });
+                        bgMusic.play().catch(e => console.log("音乐播放失败"));
                         musicToggle.textContent = '🎵 音乐：开';
                         isMusicPlaying = true;
                     }
@@ -430,21 +424,17 @@
             actionHint.textContent = step.hint;
             description.textContent = step.description;
             
-            // 更新总进度
             totalProgress.style.width = (currentStep / steps.length * 100) + '%';
             
-            // 重置步骤进度
             stepProgress = 0;
             stepProgressFill.style.width = '0%';
             
-            // 隐藏/显示进度条
             if (step.action === "auto") {
                 stepProgressEl.classList.add('hidden');
             } else {
                 stepProgressEl.classList.remove('hidden');
             }
             
-            // 隐藏/显示画布
             if (step.action === "draw") {
                 gameImage.style.display = 'none';
                 teaCanvas.style.display = 'block';
@@ -454,7 +444,6 @@
                 teaCanvas.style.display = 'none';
             }
             
-            // 更新按钮文本
             if (step.action === "auto") {
                 actionBtn.textContent = currentStep === 0 ? "开始游戏" : "下一步";
                 actionBtn.disabled = false;
@@ -469,7 +458,6 @@
 
         // 完成步骤
         function completeStep() {
-            // 显示成功动画
             const success = document.createElement('div');
             success.className = 'success-animation';
             success.textContent = '✓ 完成！';
@@ -482,7 +470,6 @@
                     currentStep++;
                     updateDisplay();
                 } else {
-                    // 游戏结束
                     stepTitle.textContent = "🎉 恭喜你完成了分茶！";
                     description.textContent = "你已经体验了完整的宋代分茶过程。分茶是中国古代茶文化的瑰宝，希望你能喜欢这门神奇的技艺！";
                     actionHint.textContent = "游戏结束";
@@ -495,8 +482,6 @@
 
         // 按钮点击处理
         function handleButtonClick() {
-            console.log("按钮被点击了！当前步骤：" + currentStep);
-            
             const step = steps[currentStep];
             
             if (step.action === "auto") {
@@ -504,7 +489,6 @@
             } else if (step.action === "draw") {
                 completeStep();
             } else if (currentStep === steps.length - 1 && actionBtn.textContent === "重新开始") {
-                // 重新开始游戏
                 currentStep = 0;
                 updateDisplay();
             }
@@ -524,7 +508,7 @@
             }
         }
 
-        // 图片拖动处理（调膏）
+        // 图片拖动处理
         function handleImageDrag(e) {
             const step = steps[currentStep];
             if (step.action === "drag" && e.buttons === 1 && stepProgress < step.targetProgress) {
@@ -538,7 +522,7 @@
             }
         }
 
-        // 画布绘画事件处理
+        // 画布绘画事件
         function handleCanvasMouseDown(e) {
             isDrawing = true;
             const rect = teaCanvas.getBoundingClientRect();
@@ -564,7 +548,6 @@
             lastX = currentX;
             lastY = currentY;
             
-            // 绘画进度
             if (stepProgress < 100) {
                 stepProgress += 0.5;
                 stepProgressFill.style.width = stepProgress + '%';
