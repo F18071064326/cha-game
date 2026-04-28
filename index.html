@@ -234,7 +234,7 @@
         <div class="step-title" id="stepTitle">第一步：备器</div>
 
         <div class="game-area" id="gameArea">
-            <img src="https://cdn.jsdelivr.net/gh/F18071064326/cha-game/1.jpg" alt="备器" class="game-image" id="gameImage">
+            <img src="1.jpg" alt="备器" class="game-image" id="gameImage">
             <div class="action-hint" id="actionHint">点击"开始游戏"按钮</div>
             <div class="step-progress" id="stepProgress">
                 <div class="step-progress-fill" id="stepProgressFill"></div>
@@ -251,9 +251,9 @@
         </div>
     </div>
 
-    <!-- 音乐播放器（你的背景音乐） -->
+    <!-- 音乐播放器（使用仓库内的音乐文件） -->
     <audio id="bgMusic" loop>
-        <source src="https://cdn.jsdelivr.net/gh/F18071064326/cha-game/background-music.mp3" type="audio/mpeg">
+        <source src="background-music.mp3" type="audio/mpeg">
         您的浏览器不支持音频播放。
     
 
@@ -270,11 +270,11 @@
         let lastX = 0;
         let lastY = 0;
 
-        // 步骤配置（全部是你自己的图片，安卓100%兼容）
+        // 步骤配置（全部使用仓库内相对路径，100%不会被拦截）
         const steps = [
             {
                 title: "第一步：备器",
-                image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/1.jpg",
+                image: "1.jpg",
                 hint: "点击'开始'按钮",
                 description: "准备好分茶所需的茶具：茶盏、茶碾、茶罗、汤瓶、茶筅等。宋代人最看重茶盏，喜欢用黑色的茶盏，因为它能最好地衬托出白色的茶汤泡沫。",
                 action: "auto",
@@ -282,7 +282,7 @@
             },
             {
                 title: "第二步：碾茶",
-                image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/2.jpg",
+                image: "2.jpg",
                 hint: "👆 快速点击茶碾碾茶",
                 description: "将茶饼放入茶碾中，细细碾成粉末。茶末碾得越细越好，这样后面点出的茶汤才会细腻洁白。",
                 action: "click",
@@ -291,7 +291,7 @@
             },
             {
                 title: "第三步：罗茶",
-                image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/3.jpg",
+                image: "3.jpg",
                 hint: "👆 点击茶罗筛出细茶末",
                 description: "用细茶罗筛出最细腻的茶末，去掉粗渣。只有最细的茶末，才能在击拂时产生丰富的泡沫。",
                 action: "click",
@@ -300,7 +300,7 @@
             },
             {
                 title: "第四步：温盏",
-                image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/4.jpg",
+                image: "4.jpg",
                 hint: "点击'下一步'按钮",
                 description: "用沸水倒入茶盏中预热。如果茶盏是冷的，茶汤就不容易产生泡沫，所以这一步很重要。",
                 action: "auto",
@@ -308,7 +308,7 @@
             },
             {
                 title: "第五步：调膏",
-                image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/5.jpg",
+                image: "5.jpg",
                 hint: "✋ 在茶盏上拖动搅拌",
                 description: "把温盏的水倒掉，放入茶末，加少量沸水调成膏状。膏的稠度要适中，像融化的巧克力一样。",
                 action: "drag",
@@ -317,7 +317,7 @@
             },
             {
                 title: "第六步：击拂",
-                image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/6.jpg",
+                image: "6.jpg",
                 hint: "⚡ 点击进行击拂",
                 description: "一边往茶盏里加水，一边用茶筅快速用力地搅动。这是最关键的一步，要让茶汤表面产生一层厚厚的、白色的泡沫。",
                 action: "click",
@@ -326,7 +326,7 @@
             },
             {
                 title: "第七步：分茶",
-                image: "https://cdn.jsdelivr.net/gh/F18071064326/cha-game/7.jpg",
+                image: "7.jpg",
                 hint: "✏️ 在茶盏上画画",
                 description: "用茶匙或茶筅在白色的泡沫上轻轻勾画。可以画出山水、花鸟、文字等各种图案，这就是神奇的'水丹青'！画完后点击'完成'按钮。",
                 action: "draw",
@@ -405,7 +405,9 @@
                         musicToggle.textContent = '🎵 音乐：关';
                         isMusicPlaying = false;
                     } else {
-                        bgMusic.play();
+                        bgMusic.play().catch(e => {
+                            console.log("音乐播放失败");
+                        });
                         musicToggle.textContent = '🎵 音乐：开';
                         isMusicPlaying = true;
                     }
@@ -454,7 +456,7 @@
             
             // 更新按钮文本
             if (step.action === "auto") {
-                actionBtn.textContent = "下一步";
+                actionBtn.textContent = currentStep === 0 ? "开始游戏" : "下一步";
                 actionBtn.disabled = false;
             } else if (step.action === "draw") {
                 actionBtn.textContent = "完成分茶";
